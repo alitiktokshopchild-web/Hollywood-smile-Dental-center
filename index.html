@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hollywood Smile Dental Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #0f2040;
+    --gold: #C9A96E;
+    --gold-light: #E8C98A;
+    --white: #FFFFFF;
+    --pearl: #F8F5F0;
+    --ice: #E8F4FD;
+    --text-muted: #8A9BB5;
+    --glass: rgba(255,255,255,0.08);
+    --glass-border: rgba(201,169,110,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 5%;
+    background: rgba(10,22,40,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    transition: all 0.3s;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+  .logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: var(--text-muted); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy) !important;
+    padding: 10px 24px; border-radius: 50px;
+    font-weight: 600 !important; text-transform: uppercase !important;
+    letter-spacing: 0.06em !important; font-size: 0.8rem !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,169,110,0.4); color: var(--navy) !important; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 26px; height: 2px; background: var(--white); border-radius: 2px; transition: 0.3s; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 120px 5% 80px;
+  }
+
+  #bg-canvas {
+    position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 600px;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    padding: 8px 18px; border-radius: 50px;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--gold); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900; line-height: 1.08;
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--white));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    font-size: 1.05rem; line-height: 1.75;
+    color: var(--text-muted); max-width: 480px; margin-bottom: 40px;
+  }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy); padding: 15px 36px; border-radius: 50px;
+    font-weight: 700; font-size: 0.9rem; letter-spacing: 0.04em;
+    text-decoration: none; display: inline-block;
+    transition: transform 0.25s, box-shadow 0.25s;
+    box-shadow: 0 4px 20px rgba(201,169,110,0.35);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(201,169,110,0.5); }
+  .btn-ghost {
+    border: 1px solid var(--glass-border); color: var(--white);
+    padding: 15px 36px; border-radius: 50px;
+    font-weight: 500; font-size: 0.9rem;
+    text-decoration: none; display: inline-block;
+    backdrop-filter: blur(10px); background: var(--glass);
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); transform: translateY(-3px); }
+
+  .hero-3d {
+    position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+    z-index: 2; width: min(480px, 45vw);
+  }
+  #tooth-canvas { width: 100%; aspect-ratio: 1; }
+
+  .hero-stats {
+    position: absolute; bottom: 40px; left: 5%; right: 5%;
+    z-index: 2; display: flex; gap: 40px; flex-wrap: wrap;
+  }
+  .stat {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px); padding: 18px 28px; border-radius: 16px;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--gold);
+  }
+  .stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 5%; }
+
+  .section-eyebrow {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.15; margin-bottom: 20px;
+  }
+  .section-subtitle {
+    font-size: 1rem; color: var(--text-muted);
+    line-height: 1.75; max-width: 520px;
+  }
+  .section-header { margin-bottom: 60px; }
+  .section-header.center { text-align: center; }
+  .section-header.center .section-subtitle { margin: 0 auto; }
+
+  /* ── SERVICES ── */
+  .services-bg { background: var(--navy-mid); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .service-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px);
+    border-radius: 24px; padding: 36px 32px;
+    transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
+    cursor: default;
+    transform-style: preserve-3d;
+    perspective: 800px;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(201,169,110,0.08), transparent);
+    opacity: 0; transition: opacity 0.35s; border-radius: 24px;
+  }
+  .service-card:hover { transform: translateY(-8px) rotateX(2deg); box-shadow: 0 30px 60px rgba(0,0,0,0.4); border-color: var(--gold); }
+  .service-card:hover::before { opacity: 1; }
+
+  .service-icon {
+    width: 60px; height: 60px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 16px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; margin-bottom: 24px;
+    box-shadow: 0 8px 25px rgba(201,169,110,0.3);
+  }
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 600; margin-bottom: 12px;
+  }
+  .service-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+
+  /* ── WHY US ── */
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .why-visual {
+    position: relative; aspect-ratio: 1;
+    display: flex; align-items: center; justify-content: center;
+  }
+  #why-canvas { width: 100%; height: 100%; }
+  .why-features { display: flex; flex-direction: column; gap: 28px; }
+  .feature-row { display: flex; gap: 20px; align-items: flex-start; }
+  .feature-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 900;
+    color: var(--glass-border); line-height: 1; min-width: 55px;
+  }
+  .feature-row h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+  .feature-row p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; }
+
+  /* ── TEAM ── */
+  .team-bg { background: var(--navy-mid); }
+  .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+  .team-card {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 24px; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .team-card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(0,0,0,0.4); }
+  .team-avatar {
+    height: 200px; display: flex; align-items: center; justify-content: center;
+    font-size: 5rem;
+    background: linear-gradient(135deg, rgba(201,169,110,0.15), rgba(10,22,40,0.5));
+    position: relative; overflow: hidden;
+  }
+  .team-avatar::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(10,22,40,0.8));
+  }
+  .team-info { padding: 24px; }
+  .team-info h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; }
+  .team-info .role { font-size: 0.82rem; color: var(--gold); font-weight: 500; margin-bottom: 10px; }
+  .team-info p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .testimonial-card {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px); border-radius: 24px; padding: 32px;
+  }
+  .stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; margin-bottom: 16px; }
+  .testimonial-card blockquote {
+    font-size: 0.95rem; line-height: 1.75;
+    color: rgba(255,255,255,0.85); margin-bottom: 24px;
+    font-style: italic;
+  }
+  .reviewer { display: flex; align-items: center; gap: 14px; }
+  .reviewer-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; color: var(--navy); font-size: 1rem;
+  }
+  .reviewer-name { font-weight: 600; font-size: 0.9rem; }
+  .reviewer-location { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* ── CONTACT ── */
+  .contact-bg { background: var(--navy-mid); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 28px; }
+  .contact-item { display: flex; gap: 18px; align-items: flex-start; }
+  .contact-icon {
+    width: 48px; height: 48px; border-radius: 14px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+  }
+  .contact-item h4 { font-size: 0.8rem; font-weight: 600; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  .contact-item p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  label { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  input, textarea, select {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 12px; padding: 14px 18px;
+    color: var(--white); font-family: 'Inter', sans-serif; font-size: 0.95rem;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    outline: none; resize: none;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,169,110,0.15);
+  }
+  input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
+  select option { background: var(--navy-mid); }
+  textarea { height: 120px; }
+  .btn-submit {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy); border: none; padding: 16px 40px; border-radius: 50px;
+    font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em;
+    cursor: pointer; align-self: flex-start;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(201,169,110,0.45); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050e1a; padding: 60px 5% 30px;
+    border-top: 1px solid var(--glass-border);
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+  .footer-brand .logo { font-size: 1.4rem; margin-bottom: 16px; display: block; }
+  .footer-brand p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; max-width: 260px; margin-bottom: 20px; }
+  .social-links { display: flex; gap: 12px; }
+  .social-link {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    text-decoration: none; transition: border-color 0.2s, transform 0.2s;
+  }
+  .social-link:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .footer-col h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--white); }
+  .footer-bottom { border-top: 1px solid var(--glass-border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; }
+  .footer-bottom p { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-links.open {
+      display: flex; flex-direction: column; gap: 0;
+      position: fixed; top: 65px; left: 0; right: 0;
+      background: rgba(10,22,40,0.97); backdrop-filter: blur(20px);
+      padding: 20px 5%;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .nav-links.open li { padding: 14px 0; border-bottom: 1px solid var(--glass-border); }
+    .hero-3d { display: none; }
+    .hero-content { max-width: 100%; }
+    .why-grid { grid-template-columns: 1fr; }
+    .why-visual { display: none; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { gap: 16px; }
+    .stat { padding: 14px 20px; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 70px 5%; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: row; overflow-x: auto; padding-bottom: 10px; }
+    .stat { flex-shrink: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <span class="logo">Hollywood <span>Smile</span></span>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">About</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Book Now</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Qatar's Premier Dental Center</div>
+    <h1>Your Perfect<br><em>Hollywood Smile</em><br>Awaits</h1>
+    <p>Experience world-class dentistry with cutting-edge technology and personalized care. We craft smiles that radiate confidence and beauty.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Book Appointment</a>
+      <a href="#services" class="btn-ghost">Our Services</a>
+    </div>
+  </div>
+
+  <div class="hero-3d">
+    <canvas id="tooth-canvas"></canvas>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">5,000+</div>
+      <div class="stat-label">Happy Patients</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">12</div>
+      <div class="stat-label">Expert Doctors</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4.9★</div>
+      <div class="stat-label">Patient Rating</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-bg" id="services">
+  <div class="section-header center reveal">
+    <div class="section-eyebrow">What We Offer</div>
+    <h2 class="section-title">Comprehensive Dental Services</h2>
+    <p class="section-subtitle">From cosmetic transformations to preventive care, we offer the full spectrum of dental excellence.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">✨</div>
+      <h3>Hollywood Smile Design</h3>
+      <p>Transform your smile with our signature veneers and smile design service. Crafted with precision for a natural, radiant result.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🦷</div>
+      <h3>Dental Implants</h3>
+      <p>Permanent, natural-looking tooth replacements using the latest titanium implant technology. Restore function and confidence.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🔆</div>
+      <h3>Teeth Whitening</h3>
+      <p>Professional-grade whitening treatments that brighten your smile by several shades in a single comfortable session.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🦴</div>
+      <h3>Orthodontics</h3>
+      <p>Traditional braces and Invisalign clear aligners to straighten teeth discreetly at any age, with stunning results.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🛡️</div>
+      <h3>Root Canal Treatment</h3>
+      <p>Painless endodontic therapy to save infected teeth. Our gentle approach ensures a comfortable, anxiety-free experience.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">👑</div>
+      <h3>Crowns & Bridges</h3>
+      <p>High-quality ceramic and zirconia restorations that match your natural teeth perfectly in color, shape, and strength.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-grid">
+    <div>
+      <div class="section-eyebrow reveal">Why Choose Us</div>
+      <h2 class="section-title reveal">Excellence in Every<br>Smile We Create</h2>
+      <div class="why-features">
+        <div class="feature-row reveal">
+          <div class="feature-num">01</div>
+          <div>
+            <h4>Advanced Technology</h4>
+            <p>We invest in the latest digital imaging, 3D scanning, and laser dentistry equipment to ensure precise, comfortable treatments.</p>
+          </div>
+        </div>
+        <div class="feature-row reveal">
+          <div class="feature-num">02</div>
+          <div>
+            <h4>Specialist Team</h4>
+            <p>Our internationally trained doctors bring global expertise and stay updated with the newest dental innovations and techniques.</p>
+          </div>
+        </div>
+        <div class="feature-row reveal">
+          <div class="feature-num">03</div>
+          <div>
+            <h4>Personalized Care</h4>
+            <p>Every treatment plan is custom-designed for your unique dental needs, aesthetic goals, and comfort level.</p>
+          </div>
+        </div>
+        <div class="feature-row reveal">
+          <div class="feature-num">04</div>
+          <div>
+            <h4>Sterilization Standards</h4>
+            <p>Hospital-grade sterilization protocols and the highest hygiene standards protect every patient's health and safety.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual">
+      <canvas id="why-canvas"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-bg" id="team">
+  <div class="section-header center reveal">
+    <div class="section-eyebrow">Our Specialists</div>
+    <h2 class="section-title">Meet Our Expert Team</h2>
+    <p class="section-subtitle">Highly qualified professionals dedicated to delivering exceptional dental care with a gentle touch.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-avatar">👨‍⚕️</div>
+      <div class="team-info">
+        <h3>Dr. Ahmed Al-Rashid</h3>
+        <div class="role">Lead Cosmetic Dentist</div>
+        <p>Specialist in smile design with 18 years of experience and international certifications in aesthetic dentistry.</p>
+      </div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">👩‍⚕️</div>
+      <div class="team-info">
+        <h3>Dr. Sarah Mohammed</h3>
+        <div class="role">Orthodontic Specialist</div>
+        <p>Expert in Invisalign and traditional orthodontics, passionate about creating perfectly aligned smiles for all ages.</p>
+      </div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">👨‍⚕️</div>
+      <div class="team-info">
+        <h3>Dr. Khalid Hassan</h3>
+        <div class="role">Implant Surgeon</div>
+        <p>Board-certified oral surgeon with expertise in complex implant cases and full-arch restoration procedures.</p>
+      </div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">👩‍⚕️</div>
+      <div class="team-info">
+        <h3>Dr. Fatima Al-Zahra</h3>
+        <div class="role">Pediatric Dentist</div>
+        <p>Gentle specialist in children's dentistry, making every young patient feel safe, comfortable, and excited to smile.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header center reveal">
+    <div class="section-eyebrow">Patient Stories</div>
+    <h2 class="section-title">What Our Patients Say</h2>
+    <p class="section-subtitle">Real experiences from real patients who trusted us with their most valuable asset — their smile.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <blockquote>"I came in for veneers and the result exceeded all my expectations. The doctors are incredibly skilled and the clinic feels luxurious. My smile has completely transformed!"</blockquote>
+      <div class="reviewer">
+        <div class="reviewer-avatar">N</div>
+        <div>
+          <div class="reviewer-name">Nour Al-Khalifa</div>
+          <div class="reviewer-location">Doha, Qatar</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <blockquote>"After years of hiding my smile, Hollywood Smile gave me the confidence I never knew I was missing. The implant treatment was painless and the results are stunning."</blockquote>
+      <div class="reviewer">
+        <div class="reviewer-avatar">M</div>
+        <div>
+          <div class="reviewer-name">Mohammed Al-Thani</div>
+          <div class="reviewer-location">Al Rayyan, Qatar</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <blockquote>"The Invisalign treatment was so smooth and discreet. The team kept me informed at every step. I finished in less time than expected and my teeth are perfect now."</blockquote>
+      <div class="reviewer">
+        <div class="reviewer-avatar">L</div>
+        <div>
+          <div class="reviewer-name">Layla Mansour</div>
+          <div class="reviewer-location">Al Wakrah, Qatar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-bg" id="contact">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Get In Touch</div>
+    <h2 class="section-title">Book Your Consultation</h2>
+    <p class="section-subtitle">Your journey to a perfect smile starts with a single appointment. Our team is ready to welcome you.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item reveal">
+        <div class="contact-icon">📍</div>
+        <div>
+          <h4>Location</h4>
+          <p>Hollywood Smile Dental Center<br>Qatar</p>
+        </div>
+      </div>
+      <div class="contact-item reveal">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <h4>Working Hours</h4>
+          <p>Saturday – Thursday: 9:00 AM – 9:00 PM<br>Friday: 2:00 PM – 9:00 PM</p>
+        </div>
+      </div>
+      <div class="contact-item reveal">
+        <div class="contact-icon">📞</div>
+        <div>
+          <h4>Phone</h4>
+          <p>+974 XXXX XXXX<br>Available during working hours</p>
+        </div>
+      </div>
+      <div class="contact-item reveal">
+        <div class="contact-icon">📧</div>
+        <div>
+          <h4>Email</h4>
+          <p>info@hollywoodsmile.qa<br>We reply within 24 hours</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Ahmed">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Al-Rashid">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="ahmed@email.com">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+974 XXXX XXXX">
+      </div>
+      <div class="form-group">
+        <label>Service Needed</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Hollywood Smile Design</option>
+          <option>Dental Implants</option>
+          <option>Teeth Whitening</option>
+          <option>Orthodontics / Invisalign</option>
+          <option>Root Canal Treatment</option>
+          <option>Crowns & Bridges</option>
+          <option>General Checkup</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message (Optional)</label>
+        <textarea placeholder="Tell us about your dental goals or any concerns..."></textarea>
+      </div>
+      <button class="btn-submit">Send Appointment Request ✦</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">Hollywood <span>Smile</span></span>
+      <p>Qatar's premier destination for cosmetic and restorative dentistry. Transforming smiles, transforming lives.</p>
+      <div class="social-links">
+        <a class="social-link" href="#">📘</a>
+        <a class="social-link" href="#">📷</a>
+        <a class="social-link" href="#">🐦</a>
+        <a class="social-link" href="#">💼</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Hollywood Smile</a></li>
+        <li><a href="#">Dental Implants</a></li>
+        <li><a href="#">Teeth Whitening</a></li>
+        <li><a href="#">Orthodontics</a></li>
+        <li><a href="#">Root Canal</a></li>
+        <li><a href="#">Crowns & Bridges</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Clinic</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Technology</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Book Appointment</a></li>
+        <li><a href="#">Patient Portal</a></li>
+        <li><a href="#">Insurance</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Hollywood Smile Dental Center. All rights reserved.</p>
+    <p>Privacy Policy · Terms of Service</p>
+  </div>
+</footer>
+
+<script>
+// ── HAMBURGER ──
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+// ── SCROLL REVEAL ──
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), (e.target.dataset.delay || 0) * 100);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach((el, i) => { el.dataset.delay = i % 4; observer.observe(el); });
+
+// ── NAV SCROLL ──
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.style.background = window.scrollY > 50 ? 'rgba(10,22,40,0.97)' : 'rgba(10,22,40,0.85)';
+});
+
+// ── BG PARTICLE CANVAS ──
+const bgCanvas = document.getElementById('bg-canvas');
+const bgCtx = bgCanvas.getContext('2d');
+let bgW, bgH, particles = [];
+
+function resizeBg() {
+  bgW = bgCanvas.width = bgCanvas.offsetWidth;
+  bgH = bgCanvas.height = bgCanvas.offsetHeight;
+}
+resizeBg();
+window.addEventListener('resize', resizeBg);
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * bgW;
+    this.y = Math.random() * bgH;
+    this.r = Math.random() * 1.5 + 0.3;
+    this.vx = (Math.random() - 0.5) * 0.3;
+    this.vy = -Math.random() * 0.4 - 0.1;
+    this.alpha = Math.random() * 0.6 + 0.1;
+    this.gold = Math.random() > 0.7;
+  }
+  update() {
+    this.x += this.vx; this.y += this.vy;
+    if (this.y < -5 || this.x < -5 || this.x > bgW + 5) this.reset();
+  }
+  draw() {
+    bgCtx.beginPath();
+    bgCtx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    bgCtx.fillStyle = this.gold
+      ? `rgba(201,169,110,${this.alpha})`
+      : `rgba(200,220,255,${this.alpha * 0.6})`;
+    bgCtx.fill();
+  }
+}
+
+for (let i = 0; i < 120; i++) particles.push(new Particle());
+
+// Nebula gradient for hero
+function drawBgGradients() {
+  const g1 = bgCtx.createRadialGradient(bgW * 0.75, bgH * 0.4, 0, bgW * 0.75, bgH * 0.4, bgW * 0.6);
+  g1.addColorStop(0, 'rgba(20,45,90,0.5)');
+  g1.addColorStop(1, 'rgba(10,22,40,0)');
+  bgCtx.fillStyle = g1; bgCtx.fillRect(0, 0, bgW, bgH);
+
+  const g2 = bgCtx.createRadialGradient(bgW * 0.1, bgH * 0.7, 0, bgW * 0.1, bgH * 0.7, bgW * 0.4);
+  g2.addColorStop(0, 'rgba(201,169,110,0.07)');
+  g2.addColorStop(1, 'rgba(10,22,40,0)');
+  bgCtx.fillStyle = g2; bgCtx.fillRect(0, 0, bgW, bgH);
+}
+
+function animateBg() {
+  bgCtx.clearRect(0, 0, bgW, bgH);
+  bgCtx.fillStyle = '#0A1628'; bgCtx.fillRect(0, 0, bgW, bgH);
+  drawBgGradients();
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateBg);
+}
+animateBg();
+
+// ── 3D TOOTH CANVAS ──
+const tc = document.getElementById('tooth-canvas');
+if (tc) {
+  const ctx = tc.getContext('2d');
+  let w, h, angle = 0;
+
+  function resizeTc() {
+    w = tc.width = tc.offsetWidth * devicePixelRatio;
+    h = tc.height = tc.offsetHeight * devicePixelRatio;
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+  }
+  resizeTc();
+  window.addEventListener('resize', resizeTc);
+
+  const ow = () => tc.offsetWidth, oh = () => tc.offsetHeight;
+
+  function drawTooth(t) {
+    const ox = ow() / 2, oy = oh() / 2;
+    const pulse = 1 + Math.sin(t * 0.8) * 0.015;
+    const rot = Math.sin(t * 0.4) * 0.18;
+    const tw = ow() * 0.36 * pulse;
+    const th = oh() * 0.52 * pulse;
+
+    ctx.save();
+    ctx.translate(ox, oy);
+    ctx.rotate(rot);
+
+    // Shadow / glow
+    const glowR = ow() * 0.45;
+    const glow = ctx.createRadialGradient(0, th * 0.2, 0, 0, th * 0.2, glowR);
+    glow.addColorStop(0, 'rgba(201,169,110,0.2)');
+    glow.addColorStop(0.5, 'rgba(201,169,110,0.05)');
+    glow.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(-glowR, -glowR, glowR * 2, glowR * 2);
+
+    // Tooth crown shape
+    ctx.beginPath();
+    ctx.moveTo(-tw * 0.5, -th * 0.1);
+    ctx.bezierCurveTo(-tw * 0.6, -th * 0.55, -tw * 0.45, -th * 0.85, 0, -th * 0.5);
+    ctx.bezierCurveTo(tw * 0.45, -th * 0.85, tw * 0.6, -th * 0.55, tw * 0.5, -th * 0.1);
+    // Root right
+    ctx.bezierCurveTo(tw * 0.5, th * 0.35, tw * 0.22, th * 0.55, tw * 0.18, th * 0.5);
+    // Root center
+    ctx.bezierCurveTo(tw * 0.08, th * 0.38, 0, th * 0.48, 0, th * 0.5);
+    // Root left
+    ctx.bezierCurveTo(0, th * 0.48, -tw * 0.08, th * 0.38, -tw * 0.18, th * 0.5);
+    ctx.bezierCurveTo(-tw * 0.22, th * 0.55, -tw * 0.5, th * 0.35, -tw * 0.5, -th * 0.1);
+    ctx.closePath();
+
+    // Main gradient (pearlescent)
+    const mainG = ctx.createLinearGradient(-tw * 0.5, -th * 0.5, tw * 0.5, th * 0.5);
+    mainG.addColorStop(0, '#ffffff');
+    mainG.addColorStop(0.25, '#e8f4fd');
+    mainG.addColorStop(0.55, '#c9d8ee');
+    mainG.addColorStop(0.8, '#a0b8d8');
+    mainG.addColorStop(1, '#7090b8');
+    ctx.fillStyle = mainG;
+    ctx.fill();
+
+    // Gold shimmer overlay
+    const shimmerOff = Math.sin(t * 1.2) * 0.15;
+    const shimmer = ctx.createLinearGradient(-tw, -th * (0.5 + shimmerOff), tw, th * (0.5 - shimmerOff));
+    shimmer.addColorStop(0, 'rgba(201,169,110,0)');
+    shimmer.addColorStop(0.45, 'rgba(201,169,110,0)');
+    shimmer.addColorStop(0.5, 'rgba(201,169,110,0.18)');
+    shimmer.addColorStop(0.55, 'rgba(232,201,138,0.12)');
+    shimmer.addColorStop(1, 'rgba(201,169,110,0)');
+    ctx.fillStyle = shimmer;
+    ctx.fill();
+
+    // Outline
+    ctx.strokeStyle = 'rgba(201,169,110,0.4)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Highlight
+    ctx.beginPath();
+    ctx.ellipse(-tw * 0.12, -th * 0.28, tw * 0.14, th * 0.12, -0.4, 0, Math.PI * 2);
+    const hl = ctx.createRadialGradient(-tw * 0.12, -th * 0.28, 0, -tw * 0.12, -th * 0.28, tw * 0.16);
+    hl.addColorStop(0, 'rgba(255,255,255,0.75)');
+    hl.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = hl;
+    ctx.fill();
+
+    ctx.restore();
+
+    // Orbiting sparkles
+    const orbitR = ow() * 0.33;
+    const sparkles = 8;
+    for (let i = 0; i < sparkles; i++) {
+      const a = (i / sparkles) * Math.PI * 2 + t * 0.5;
+      const r = orbitR + Math.sin(t * 1.3 + i) * orbitR * 0.08;
+      const sx = ox + Math.cos(a) * r;
+      const sy = oy + Math.sin(a) * r * 0.6;
+      const sz = (Math.sin(a + Math.PI) + 1) / 2;
+      const sparkSize = (1 + sz) * 3;
+      const alpha = 0.3 + sz * 0.7;
+      ctx.beginPath();
+      ctx.arc(sx, sy, sparkSize, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(201,169,110,${alpha})`;
+      ctx.fill();
+
+      // Cross sparkle
+      ctx.strokeStyle = `rgba(232,201,138,${alpha * 0.7})`;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(sx - sparkSize * 2.5, sy);
+      ctx.lineTo(sx + sparkSize * 2.5, sy);
+      ctx.moveTo(sx, sy - sparkSize * 2.5);
+      ctx.lineTo(sx, sy + sparkSize * 2.5);
+      ctx.stroke();
+    }
+
+    // Ring
+    ctx.beginPath();
+    ctx.ellipse(ox, oy + oh() * 0.05, orbitR * 1.08, orbitR * 0.32, 0, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(201,169,110,0.15)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  }
+
+  let time = 0;
+  function animateTooth() {
+    ctx.clearRect(0, 0, ow(), oh());
+    time += 0.016;
+    drawTooth(time);
+    requestAnimationFrame(animateTooth);
+  }
+  animateTooth();
+}
+
+// ── WHY CANVAS ── rotating DNA/molecule
+const wc = document.getElementById('why-canvas');
+if (wc) {
+  const ctx2 = wc.getContext('2d');
+  let t2 = 0;
+
+  function resizeWc() {
+    wc.width = wc.offsetWidth;
+    wc.height = wc.offsetHeight;
+  }
+  resizeWc();
+  window.addEventListener('resize', resizeWc);
+
+  function drawWhyViz() {
+    const w = wc.offsetWidth, h = wc.offsetHeight;
+    ctx2.clearRect(0, 0, w, h);
+    const cx = w / 2, cy = h / 2;
+    const R = Math.min(w, h) * 0.34;
+
+    // Outer ring
+    ctx2.beginPath();
+    ctx2.arc(cx, cy, R * 1.1, 0, Math.PI * 2);
+    ctx2.strokeStyle = 'rgba(201,169,110,0.12)';
+    ctx2.lineWidth = 1; ctx2.stroke();
+
+    // Inner ring
+    ctx2.beginPath();
+    ctx2.arc(cx, cy, R * 0.65, 0, Math.PI * 2);
+    ctx2.strokeStyle = 'rgba(201,169,110,0.18)';
+    ctx2.lineWidth = 1; ctx2.stroke();
+
+    // Rotating nodes
+    const nodes = 6;
+    const nodePositions = [];
+    for (let i = 0; i < nodes; i++) {
+      const a = (i / nodes) * Math.PI * 2 + t2 * 0.4;
+      const nx = cx + Math.cos(a) * R;
+      const ny = cy + Math.sin(a) * R;
+      nodePositions.push({ x: nx, y: ny, a });
+
+      // Node circle
+      const ng = ctx2.createRadialGradient(nx, ny, 0, nx, ny, 22);
+      ng.addColorStop(0, 'rgba(201,169,110,0.9)');
+      ng.addColorStop(1, 'rgba(201,169,110,0)');
+      ctx2.beginPath(); ctx2.arc(nx, ny, 22, 0, Math.PI * 2);
+      ctx2.fillStyle = ng; ctx2.fill();
+
+      ctx2.beginPath(); ctx2.arc(nx, ny, 8, 0, Math.PI * 2);
+      ctx2.fillStyle = '#C9A96E'; ctx2.fill();
+    }
+
+    // Connecting lines
+    for (let i = 0; i < nodes; i++) {
+      for (let j = i + 1; j < nodes; j++) {
+        if (j - i <= 2 || (i === 0 && j === nodes - 1)) {
+          ctx2.beginPath();
+          ctx2.moveTo(nodePositions[i].x, nodePositions[i].y);
+          ctx2.lineTo(nodePositions[j].x, nodePositions[j].y);
+          ctx2.strokeStyle = 'rgba(201,169,110,0.15)';
+          ctx2.lineWidth = 1; ctx2.stroke();
+        }
+      }
+    }
+
+    // Center icon
+    const iconSize = R * 0.35;
+    const igc = ctx2.createRadialGradient(cx, cy, 0, cx, cy, iconSize * 1.5);
+    igc.addColorStop(0, 'rgba(15,32,64,0.9)');
+    igc.addColorStop(1, 'rgba(10,22,40,0.5)');
+    ctx2.beginPath(); ctx2.arc(cx, cy, iconSize, 0, Math.PI * 2);
+    ctx2.fillStyle = igc; ctx2.fill();
+    ctx2.strokeStyle = 'rgba(201,169,110,0.5)';
+    ctx2.lineWidth = 2; ctx2.stroke();
+
+    ctx2.fillStyle = '#C9A96E';
+    ctx2.font = `${iconSize * 0.8}px Arial`;
+    ctx2.textAlign = 'center';
+    ctx2.textBaseline = 'middle';
+    ctx2.fillText('🦷', cx, cy);
+
+    t2 += 0.016;
+    requestAnimationFrame(drawWhyViz);
+  }
+  drawWhyViz();
+}
+</script>
+</body>
+</html>
